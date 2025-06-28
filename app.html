@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page">
+    <header class="app-header">
+        <div class="header-content">
+            <div class="user-info">
+                <img id="userAvatar" class="user-avatar" alt="User Avatar">
+                <div class="user-details">
+                    <h2 id="userName">Welcome back!</h2>
+                    <p class="user-subtitle">Let's get things done ✨</p>
+                </div>
+            </div>
+            <button id="signOutBtn" class="btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16,17 21,12 16,7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                Sign Out
+            </button>
+        </div>
+    </header>
+
+    <main class="app-main">
+      
+        <!--  for combing task management syst i am writing this -->
+         
+        <div class="task-management-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">🚀</span>
+                    Task Management Hub
+                </h2>
+                <p class="section-subtitle">Create new tasks and find existing ones</p>
+            </div>
+
+            <!-- for Adding new Task Form we have used it -->
+            <div class="add-task-container">
+                <h3 class="subsection-title">
+                    <span class="subsection-icon">➕</span>
+                    Add New Task
+                </h3>
+                <form id="taskForm" class="task-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <input type="text" id="taskInput" placeholder="What needs to be done? ✨" required>
+                            <button type="submit" class="btn-add">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Add Task
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskCategory">Category</label>
+                            <select id="taskCategory" class="form-select">
+                                <option value="personal">🏠 Personal</option>
+                                <option value="work">💼 Work</option>
+                                <option value="shopping">🛒 Shopping</option>
+                                <option value="health">🏥 Health</option>
+                                <option value="learning">📚 Learning</option>
+                                <option value="finance">💰 Finance</option>
+                                <option value="other">📝 Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority" class="form-select">
+                                <option value="low">🟢 Low</option>
+                                <option value="medium">🟡 Medium</option>
+                                <option value="high">🔴 High</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- for adding  Search and Filter Section  -->
+            <div class="search-filter-container">
+                <h3 class="subsection-title">
+                    <span class="subsection-icon">🔍</span>
+                    Find & Filter Tasks
+                </h3>
+                
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Search your tasks... 🔎" class="search-input">
+                        <button id="clearSearch" class="clear-search" style="display: none;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="filterCategory">Category</label>
+                        <select id="filterCategory" class="filter-select">
+                            <option value="all">🌈 All Categories</option>
+                            <option value="personal">🏠 Personal</option>
+                            <option value="work">💼 Work</option>
+                            <option value="shopping">🛒 Shopping</option>
+                            <option value="health">🏥 Health</option>
+                            <option value="learning">📚 Learning</option>
+                            <option value="finance">💰 Finance</option>
+                            <option value="other">📝 Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filterPriority">Priority</label>
+                        <select id="filterPriority" class="filter-select">
+                            <option value="all">🎯 All Priorities</option>
+                            <option value="high">🔴 High</option>
+                            <option value="medium">🟡 Medium</option>
+                            <option value="low">🟢 Low</option>
+                        </select>
+                    </div>
+                    
+                    <button id="clearFilters" class="btn-clear-filters">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18l-2 13H5L3 6z"/>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        </svg>
+                        Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- it shows total Task Stats like how many done , how many left -->
+        <div class="task-stats">
+            <div class="stat-card stat-total">
+                <div class="stat-icon">📊</div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalTasks">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-decoration"></div>
+            </div>
+            <div class="stat-card stat-priority">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-content">
+                    <div class="stat-number" id="highPriorityTasks">0</div>
+                    <div class="stat-label">High Priority</div>
+                </div>
+                <div class="stat-decoration"></div>
+            </div>
+            <div class="stat-card stat-completed">
+                <div class="stat-icon">🎉</div>
+                <div class="stat-content">
+                    <div class="stat-number" id="completedToday">0</div>
+                    <div class="stat-label">Completed Today</div>
+                </div>
+                <div class="stat-decoration"></div>
+            </div>
+            <div class="stat-card stat-progress">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-content">
+                    <div class="stat-number" id="progressPercentage">0%</div>
+                    <div class="stat-label">Progress</div>
+                </div>
+                <div class="stat-decoration"></div>
+            </div>
+        </div>
+
+        <!-- all Task Stages like completed , todo , archive  -->
+        <div class="task-stages">
+            <div class="stage stage-todo" data-stage="todo">
+                <div class="stage-header">
+                    <h3>
+                        <span class="stage-icon">📋</span>
+                        Todo
+                    </h3>
+                    <span class="task-count" id="todoCount">0</span>
+                </div>
+                <div class="stage-decoration"></div>
+                <div class="task-list" id="todoList"></div>
+            </div>
+
+            <div class="stage stage-completed" data-stage="completed">
+                <div class="stage-header">
+                    <h3>
+                        <span class="stage-icon">✅</span>
+                        Completed
+                    </h3>
+                    <span class="task-count" id="completedCount">0</span>
+                </div>
+                <div class="stage-decoration"></div>
+                <div class="task-list" id="completedList"></div>
+            </div>
+
+            <div class="stage stage-archived" data-stage="archived">
+                <div class="stage-header">
+                    <h3>
+                        <span class="stage-icon">📦</span>
+                        Archived
+                    </h3>
+                    <span class="task-count" id="archivedCount">0</span>
+                </div>
+                <div class="stage-decoration"></div>
+                <div class="task-list" id="archivedList"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
